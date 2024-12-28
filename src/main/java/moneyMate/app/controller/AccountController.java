@@ -2,6 +2,7 @@ package moneyMate.app.controller;
 
 import lombok.RequiredArgsConstructor;
 import moneyMate.app.dto.AccountDto;
+import moneyMate.app.dto.TransferDto;
 import moneyMate.app.entity.Account;
 import moneyMate.app.entity.Transaction;
 import moneyMate.app.entity.User;
@@ -33,16 +34,16 @@ public class AccountController {
         return ResponseEntity.ok(accountService.getUserAccounts(user.getUid()));
     }
 
-//    @PostMapping("/transfer")
-//    public ResponseEntity<Transaction> transferFunds(@RequestBody TransferDto transferDto, Authentication authentication) throws Exception {
-//        var user = (User) authentication.getPrincipal();
-//        return ResponseEntity.ok(accountService.transferFunds(transferDto, user));
-//    }
-//
-//    @GetMapping("/rates")
-//    public ResponseEntity<Map<String, Double>> getExchangeRate() {
-//        return ResponseEntity.ok(accountService.getExchangeRate());
-//    }
+    @PostMapping("/transfer")
+    public ResponseEntity<Transaction> transferFunds(@RequestBody TransferDto transferDto, Authentication authentication) throws Exception {
+        var user = (User) authentication.getPrincipal();
+        return ResponseEntity.ok(accountService.transferFunds(transferDto, user));
+    }
+
+    @GetMapping("/rates")
+    public ResponseEntity<Map<String, Double>> getExchangeRate() {
+        return ResponseEntity.ok(accountService.getExchangeRate());
+    }
 //
 //    @PostMapping("/find")
 //    public ResponseEntity<Account> findAccount(@RequestBody TransferDto dto) {
